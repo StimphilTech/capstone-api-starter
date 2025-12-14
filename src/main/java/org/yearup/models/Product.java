@@ -120,4 +120,19 @@ public class Product
     {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", categoryId=" + categoryId +
+                ", description='" + description + '\'' +
+                ", subCategory='" + subCategory + '\'' +
+                ", stock=" + stock +
+                ", isFeatured=" + isFeatured +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }
