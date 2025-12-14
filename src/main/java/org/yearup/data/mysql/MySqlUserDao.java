@@ -14,6 +14,7 @@ import java.util.List;
 @Component
 public class MySqlUserDao extends MySqlDaoBase implements UserDao
 {
+    private DataSource dataSource;
     @Autowired
     public MySqlUserDao(DataSource dataSource)
     {
