@@ -43,4 +43,10 @@ public class ShoppingCart
         return total;
     }
 
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "items=" + items +
+                '}';
+    }
 }

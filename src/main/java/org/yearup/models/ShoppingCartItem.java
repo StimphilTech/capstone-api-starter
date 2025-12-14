@@ -56,5 +56,15 @@ public class ShoppingCartItem
         BigDecimal discountAmount = subTotal.multiply(discountPercent);
 
         return subTotal.subtract(discountAmount);
+
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCartItem{" +
+                "product=" + product +
+                ", quantity=" + quantity +
+                ", discountPercent=" + discountPercent +
+                '}';
     }
 }
