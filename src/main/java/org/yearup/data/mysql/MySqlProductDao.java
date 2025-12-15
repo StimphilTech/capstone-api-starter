@@ -14,9 +14,7 @@ import java.util.List;
 @Component
 public class MySqlProductDao extends MySqlDaoBase implements ProductDao {
 
-    private DataSource dataSource;
 
-    @Autowired
     public MySqlProductDao(DataSource dataSource)
     {
         super(dataSource);
