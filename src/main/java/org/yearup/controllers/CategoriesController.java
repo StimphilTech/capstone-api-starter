@@ -17,7 +17,7 @@ import java.util.List;
     // http://localhost:8080/categories
 // add annotation to allow cross site origin requests
 @RestController
-@RequestMapping("category")
+@RequestMapping("categories")
 @CrossOrigin
 public class CategoriesController {
     private CategoryDao categoryDao;
@@ -33,7 +33,7 @@ public class CategoriesController {
 
     // add the appropriate annotation for a get action
     @GetMapping
-    @PreAuthorize("premitAll()")
+    @PreAuthorize("permitAll()")
     public List<Category> getAll() {
         try {
             return categoryDao.getAllCategories();
@@ -47,7 +47,7 @@ public class CategoriesController {
     @GetMapping("{id}")
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id) {
-        try {
+
             var category = categoryDao.getById(id);
 
             if (category == null) {
@@ -55,15 +55,14 @@ public class CategoriesController {
             }
             // get the category by id
             return category;
-        } catch (Exception ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+
         }
-    }
+
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
     @GetMapping("{categoryId}/products")
-    @PreAuthorize("premitAll()")
+    @PreAuthorize("permitAll()")
     public List<Product> getProductsById(@PathVariable int categoryId) {
         try {
             // get a list of product by categoryId
@@ -152,4 +151,5 @@ public class CategoriesController {
         // delete the category by id
 
 }
+
 
