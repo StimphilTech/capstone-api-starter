@@ -7,14 +7,13 @@ The API front end will be able to be edited with minor changes and the project w
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: 
 
-- As a developer, 
+- As a developer, I want to find and return all categories so the customers can see a list of categories. 
   
-- As a developer, 
+- As a developer, I want to get caregories by id so al customers can view category.  
   
-- As a developer, I want 
-- As a developer, I want 
+- As a developer, I want to get a list of products by id so all customers can find category. 
+- As a developer, I want to e able to create categories so that the customers can choose between the categories. 
 
 
 ## Setup
