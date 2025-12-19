@@ -82,8 +82,6 @@ public class ProductsController
         try
         {
 
-            // productDao.create(product); the issue was that when the user was requesting to update a. existing record
-            // the server was creating a new one with the information that was given
             productDao.update(id,product);
         }
         catch(Exception ex)
