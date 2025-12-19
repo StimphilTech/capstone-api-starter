@@ -12,32 +12,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static java.sql.DriverManager.getConnection;
+
 @Component
-public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDao
-{
-    public MySqlShoppingCartDao(DataSource dataSource)
-    {
+public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDao {
+    public MySqlShoppingCartDao(DataSource dataSource) {
         super(dataSource);
     }
 
     @Override
-    public ShoppingCart getByUserId(int userId)
-    {
+    public ShoppingCart getByUserId(int userId) {
         ShoppingCart cart = new ShoppingCart();
         // Join with products table to get all product details (name, price, etc.)
         String sql = "SELECT * FROM shopping_cart " +
                 "JOIN products ON shopping_cart.product_id = products.product_id " +
                 "WHERE user_id = ?;";
 
-        try (Connection connection = getConnection())
-        {
+        try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, userId);
 
             ResultSet row = statement.executeQuery();
 
-            while (row.next())
-            {
+            while (row.next()) {
                 // Reusing the static mapRow from MySqlProductDao to build the Product object
                 Product product = MySqlProductDao.mapRow(row);
                 int quantity = row.getInt("quantity");
@@ -48,9 +45,7 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
 
                 cart.add(item);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException("Error retrieving shopping cart", e);
         }
 
@@ -59,7 +54,11 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
 
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
+
+
         return null;
+
+
     }
 
     @Override
@@ -67,34 +66,13 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
 
     }
 
+
     @Override
     public void delete(int productId) {
-
     }
+}
 
-    @Override
-    public void addProductToCart(int userId, int productId, int quantity)
-    {
-        // Use "ON DUPLICATE KEY UPDATE" to handle the "Add 1 if exists" requirement efficiently
-        String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) " +
-                "VALUES (?, ?, ?) " +
-                "ON DUPLICATE KEY UPDATE quantity = quantity + ?;";
-
-        try (Connection connection = getConnection())
-        {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, userId);
-            statement.setInt(2, productId);
-            statement.setInt(3, quantity);
-            statement.setInt(4, quantity);
-
-            statement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
-            throw new RuntimeException("Error adding product to cart", e);
-        }
-    }
+    /*
 
     @Override
     public boolean updateProductQuantity(int userId, int productId, int quantity)
@@ -133,5 +111,5 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
         {
             throw new RuntimeException("Error clearing shopping cart", e);
         }
-    }
-}
+    }*/
+

@@ -116,8 +116,6 @@ public class CategoriesController {
 }
 
 
-
-
         // update the category by id
 
 
