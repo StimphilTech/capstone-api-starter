@@ -8,12 +8,13 @@ The API front end will be able to be edited with minor changes and the project w
 ## User Stories
 
 
-- As a developer, I want to find and return all categories so the customers can see a list of categories. 
+- As a  user, I want to add products to my shopping cart from the product list, So that I can save them for later and purchase them in a single transaction.
   
-- As a developer, I want to get caregories by id so al customers can view category.  
+- As a user, I want to filter the product list by specific categories (such as "Electronics" so that I can quickly find the specific types of items I am interested in without scrolling through the entire inventory.
   
-- As a developer, I want to get a list of products by id so all customers can find category. 
-- As a developer, I want to e able to create categories so that the customers can choose between the categories. 
+- As a user, I want to click on a category and see only the products belonging to that group, so that I can browse a curated list of related items without seeing irrelevant products.
+  
+- As a user with administrative privileges, I want to add completely new categories to the store's catalog, so that I can expand the business into new product lines and keep different types of items logically separated.
 
 
 ## Setup
